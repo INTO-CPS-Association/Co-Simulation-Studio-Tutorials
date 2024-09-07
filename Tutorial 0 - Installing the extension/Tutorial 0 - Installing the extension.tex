@@ -1,0 +1,97 @@
+\documentclass[11pt,a4paper]{../tutorial}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xspace}
+
+\title{Tutorial 0 --- Installing the VS Code Extension}
+\date{September 2024}
+\author{Markus S. Ellyton}
+
+\def\intocpsVer{4.0.0}
+\newcommand{\JavaURL}{https://adoptium.net/temurin/releases/?version=11}
+\newcommand{\VSCodeURL}{https://code.visualstudio.com/}
+\newcommand{\MaestroReleasesURL}{https://github.com/INTO-CPS-Association/maestro/releases/}
+\newcommand{\cosimext}{\texttt{Cosimulation Studio}\xspace}
+\newcommand{\maestro}{\texttt{Maestro}\xspace}
+
+\begin{document}
+
+\section*{Overview}
+
+This INTO-CPS tutorial will show you how to:
+
+\begin{enumerate}[noitemsep]
+\item Install the \cosimext{} extension for Visual Studio Code
+\item Install the \maestro{} COE (Co-simulation Orchestration Engine) w. Web API
+\end{enumerate}
+
+\section*{Requirements}
+
+The tutorial assumes that you have the following pieces of software installed:
+
+\begin{itemize}[noitemsep]
+	\item Visual Studio Code. Can be installed from \url{\VSCodeURL}
+	\item Java SE Runtime Environment 11, e.g. the latest version of the Temurin distribution from \url{\JavaURL}, making sure to select your corresponding operating system in the dropdown menu. 
+\end{itemize}
+
+If any of these are missing from your system, it can make it difficult or impossible to follow certain steps of the tutorial, or some parts of the tool will not work, so ensure that the dependencies are properly installed before continuing. Unless otherwise stated, all the instructions in this tutorial are independent of whether you are using Linux, Windows or macOS.
+
+\section{Install the \cosimext{} extension for Visual Studio Code}
+
+
+\begin{instructions} 
+
+\item To install the \cosimext{} extension, first open the \texttt{Extensions} view in Visual Studio Code.
+	
+	\begin{annotation}[width=0.85\linewidth]{figures/step_1_extensions_view.png}
+        	\usquare{0.5cm}{0.5cm}{0.15}{Open Extensions view}{0.025,0.490}
+	%	\helpergrid
+	\end{annotation}
+
+\item Then search for ``Cosimulation Studio'' and select the extension published by ``intocps''.
+	
+	\begin{annotation}[width=0.85\linewidth]{figures/step_2_extensions_search.png}
+        	\usquare{3cm}{0.25cm}{0.15}{1. Search}{0.19,0.895}
+			\rsquare{3.25cm}{0.8cm}{0.5}{2. Select}{0.19,0.7825}
+	%	\helpergrid
+	\end{annotation}
+
+\item Now install the extension. Optionally enable automatic updates to always get the most recent version of the extension, when new releases are published.
+	
+	\begin{annotation}[width=0.85\linewidth]{figures/step_3_extension_install.png}
+        	\usquare{0.70cm}{0.4cm}{0.15}{1. Click to install}{0.585,0.69}
+			\usquare[blue]{1.3cm}{0.4cm}{0.75}{[Optional] 2. Enable automatic updates}{0.67,0.69}
+	%	\helpergrid
+	\end{annotation}
+
+\end{instructions}
+
+\newpage 
+
+\section{Install the Maestro COE (Co-simulation Orchestration Engine) w. Web API}
+
+\begin{instructions}
+\item Find the latest release of \maestro{} on the GitHub Releases page at \url{\MaestroReleasesURL}, and download the file named \texttt{maestro-webapi-<latest-version>-bundle.jar}.
+
+	\begin{annotation}[width=0.85\linewidth]{figures/step_4_maestro_releases.png}
+		\usquare{1.75cm}{0cm}{0.15}{JAR with Web API}{0.385,0.1}
+	%	\helpergrid
+	\end{annotation}
+
+\item To verify that your installed version of Java works with the downloaded JAR, run \texttt{java -jar maestro-webapi-<latest-version>-bundle.jar} in a terminal. You should see something similar to the image below:
+
+	\begin{annotation}[width=0.85\linewidth]{figures/step_5_maestro_terminal.png}
+	\end{annotation}
+
+\newpage
+\item As a final check, with \maestro{} running in the background, open \url{http://localhost:8082/ping} in your browser. You should see an almost blank page with only the text ``OK'' to indicate that \maestro{} is running properly.     
+
+
+    \bigskip
+    \bigskip
+    {\large\bfseries Congratulations!}
+
+    You have now successfully installed the \cosimext{} extension for Visual Studio Code and \maestro{}. You can now move on to the next tutorial that will describe how to set up and run your first simulation.
+
+\end{instructions}
+
+\end{document}
