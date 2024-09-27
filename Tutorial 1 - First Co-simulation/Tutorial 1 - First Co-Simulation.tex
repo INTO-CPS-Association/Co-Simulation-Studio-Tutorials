@@ -1,0 +1,152 @@
+\documentclass[11pt,a4paper]{../tutorial}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xspace}
+
+\title{Tutorial 1 --- First Co-Simulation}
+\date{September 2024}
+\author{Markus S. Ellyton}
+
+\def\intocpsVer{4.0.0}
+\newcommand{\JavaURL}{https://adoptium.net/temurin/releases/?version=11}
+\newcommand{\VSCodeURL}{https://code.visualstudio.com/}
+\newcommand{\MaestroReleasesURL}{https://github.com/INTO-CPS-Association/maestro/releases/}
+\newcommand{\cosimext}{\texttt{Cosimulation Studio}\xspace}
+\newcommand{\maestro}{\texttt{Maestro}\xspace}
+
+\begin{document}
+
+\section*{Overview}
+
+This INTO-CPS tutorial will show you how to:
+
+\begin{enumerate}[noitemsep]
+\item Set up a co-simulation project in Visual Studio Code
+\item Run a co-simulation from within Visual Studio Code
+\end{enumerate}
+
+\section*{Requirements}
+
+The tutorial assumes that you have the following pieces of software installed:
+
+\begin{itemize}[noitemsep]
+	\item Visual Studio Code
+	\item \cosimext{} extension for Visual Studio Code
+	\item Java SE Runtime Environment 11, newer versions may also work
+	\item \maestro{} COE (Co-simulation Orchestration Engine) w. Web API
+\end{itemize}
+
+Follow Tutorial 0 if any of these are missing from your system.
+
+\section{Set up a co-simulation project in Visual Studio Code}
+
+Any workspace folder containing a \texttt{cosim.json} simulation configuration file is automatically treated as a co-simulation project, enabling features such as autocompletion, linting and integration with the \maestro COE. Setting up a project is thus as simple as opening a folder in Visual Studio Code and writing a \texttt{cosim.json} file. This section of the tutorial describes this process.
+
+%  You are additionally free to configure the file name that triggers co-simulation project features. 
+
+% It is generally a good practice to keep anything relevant to a project within the same workspace, as this makes the project portable between systems, where the project may be located at different paths on the filesystem.
+
+\begin{instructions} 
+
+\item Launch Visual Studio Code. It is not important if the view is empty as the one below or if Visual Studio Code opens up an existing project.
+	
+	\begin{annotation}[width=0.85\linewidth]{figures/step_1_empty_window.png}
+	\end{annotation}
+
+\item To open the folder that will contain the project, select \textit{File \textgreater{} Open folder...}.
+	
+	\begin{annotation}[width=0.85\linewidth]{figures/step_2_open_folder.png}
+        	\usquare{4cm}{0.5cm}{0.15}{1. Open folder}{0.197,0.63}
+	%	\helpergrid
+	\end{annotation}
+
+\item Select an empty folder or create a new one.
+	
+	\begin{annotation}[width=0.85\linewidth]{figures/step_3_pick_folder.png}
+        	\usquare{1.2cm}{0.4cm}{0.8}{1. Select Folder}{0.862,0.04}
+	%	\helpergrid
+	\end{annotation}
+
+\newpage
+\item A pop-up will appear, asking you to confirm that you trust the authors of the files in the selected folder. You need to confirm for the language features of the extension to work.
+	
+	\begin{annotation}[width=0.85\linewidth]{figures/step_4_trust_authors.png}
+        	\usquare{3cm}{0.45cm}{0.15}{1. Trust the authors}{0.425,0.235}
+	%	\helpergrid
+	\end{annotation}
+
+\item Create a new file named \texttt{cosim.json}.
+	
+	\begin{annotation}[width=0.85\linewidth]{figures/step_5_new_file.png}
+        	\usquare{4.5cm}{0.4cm}{0.15}{1. New File...}{0.35,0.68}
+	%	\helpergrid
+	\end{annotation}
+
+\item We will be using the example found at \url{https://www.github.com}. Copy-and-paste the contents of the example \texttt{cosim.json} file into your own \texttt{cosim.json}.
+
+\item The paths referring to the location of the FMUs should now be underlined with a red squiggle. If you hover over the path, you should see that the reason for the error is that the extension cannot find a valid FMU at that location.
+	
+	\begin{annotation}[width=0.85\linewidth]{figures/step_6_missing_fmus.png}
+        	\usquare{7cm}{1.2cm}{0.15}{1. Error}{0.68,0.66}
+	%	\helpergrid
+	\end{annotation}
+
+\item To make the FMUs available to the extension, we will create a new folder named \texttt{fmus} in the workspace to contain the FMUs.
+	
+	\begin{annotation}[width=0.85\linewidth]{figures/step_7_new_folder.png}
+        	\usquare{4.5cm}{0.4cm}{0.15}{1. New Folder...}{0.265,0.68}
+	%	\helpergrid
+	\end{annotation}
+
+	\bigskip
+    \bigskip
+    {\large\bfseries Note:} The extension does not impose any restrictions on the structure of the project, so you can name the folder anything you like, remembering to update the corresponding path in \texttt{cosim.json}.
+
+\item Populate the newly created folder with the two FMUs found at \url{https://www.github.com}.
+	
+	\begin{annotation}[width=0.85\linewidth]{figures/step_7_new_folder.png}
+        	\usquare{4.5cm}{0.4cm}{0.15}{1. New Folder...}{0.265,0.68}
+	%	\helpergrid
+	\end{annotation}
+
+\item The errors indicating that the FMUs were not found should now have cleared. At this point, we have a very basic project set up that is ready for simulation.
+	
+	\begin{annotation}[width=0.85\linewidth]{figures/step_9_error_free.png}
+	%	\helpergrid
+	\end{annotation}
+
+\end{instructions}
+
+\newpage 
+
+\section{Run a co-simulation from within Visual Studio Code}
+
+\begin{instructions}
+
+\item Before running a simulation, ensure that \maestro is running on your local device. Open a terminal in the folder where you have installed \maestro, and then run \texttt{java -jar maestro-webapi-<latest-version>-bundle.jar}. You should see something similar to the image below:
+
+\begin{annotation}[width=0.85\linewidth]{figures/step_10_maestro_terminal.png}
+	%	\helpergrid
+	\end{annotation}
+
+\item Run the simulation from Visual Studio Code.
+
+
+\begin{annotation}[width=0.85\linewidth]{figures/step_8_run_simulation.png}
+	\usquare{0.4cm}{0.4cm}{0.75}{1. Run simulation}{0.92,0.9}
+	\end{annotation}
+
+\item After running for a short period, the results show up in a new file 
+
+
+	\begin{annotation}[width=0.85\linewidth]{figures/step_8_run_simulation.png}
+		\usquare{0.4cm}{0.4cm}{0.75}{1. Run simulation}{0.92,0.9}
+		\end{annotation}
+
+		\bigskip
+    \bigskip
+    {\large\bfseries Congratulations!}
+
+    You have now successfully set up and simulated your first co-simulation project in Visual Studio Code.
+\end{instructions}
+
+\end{document}
