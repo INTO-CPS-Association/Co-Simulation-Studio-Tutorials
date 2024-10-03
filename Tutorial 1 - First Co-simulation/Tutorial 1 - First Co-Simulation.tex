@@ -49,51 +49,51 @@ Any workspace folder containing a \texttt{cosim.json} simulation configuration f
 
 \item Launch Visual Studio Code. It is not important if the view is empty as the one below or if Visual Studio Code opens up an existing project.
 	
-	\begin{annotation}[width=0.85\linewidth]{figures/step_1_empty_window.png}
+	\begin{annotation}[width=0.9\linewidth]{figures/step_1_empty_window.png}
 	\end{annotation}
 
 \item To open the folder that will contain the project, select \textit{File \textgreater{} Open folder...}.
 	
-	\begin{annotation}[width=0.85\linewidth]{figures/step_2_open_folder.png}
-        	\usquare{4cm}{0.5cm}{0.15}{1. Open folder}{0.197,0.63}
+	\begin{annotation}[width=0.9\linewidth]{figures/step_2_open_folder.png}
+        	\usquare{4cm}{0.5cm}{0.15}{Open folder}{0.197,0.63}
 	%	\helpergrid
 	\end{annotation}
 
 \item Select an empty folder or create a new one.
 	
-	\begin{annotation}[width=0.85\linewidth]{figures/step_3_pick_folder.png}
-        	\usquare{1.2cm}{0.4cm}{0.8}{1. Select Folder}{0.862,0.04}
+	\begin{annotation}[width=0.9\linewidth]{figures/step_3_pick_folder.png}
+        	\usquare{1.2cm}{0.4cm}{0.8}{Select Folder}{0.862,0.04}
 	%	\helpergrid
 	\end{annotation}
 
 \newpage
 \item A pop-up will appear, asking you to confirm that you trust the authors of the files in the selected folder. You need to confirm for the language features of the extension to work.
 	
-	\begin{annotation}[width=0.85\linewidth]{figures/step_4_trust_authors.png}
-        	\usquare{3cm}{0.45cm}{0.15}{1. Trust the authors}{0.425,0.235}
+	\begin{annotation}[width=0.9\linewidth]{figures/step_4_trust_authors.png}
+        	\usquare{3cm}{0.45cm}{0.15}{Trust the authors}{0.425,0.235}
 	%	\helpergrid
 	\end{annotation}
 
 \item Create a new file named \texttt{cosim.json}.
 	
-	\begin{annotation}[width=0.85\linewidth]{figures/step_5_new_file.png}
-        	\usquare{4.5cm}{0.4cm}{0.15}{1. New File...}{0.35,0.68}
+	\begin{annotation}[width=0.9\linewidth]{figures/step_5_new_file.png}
+        	\usquare{4.5cm}{0.4cm}{0.15}{New File...}{0.35,0.68}
 	%	\helpergrid
 	\end{annotation}
 
-\item We will be using the example found at \url{https://www.github.com}. Copy-and-paste the contents of the example \texttt{cosim.json} file into your own \texttt{cosim.json}.
+\item We will be using the example found in the tutorial archive. Copy-and-paste the contents of the example \texttt{cosim.json} file into your own \texttt{cosim.json}.
 
 \item The paths referring to the location of the FMUs should now be underlined with a red squiggle. If you hover over the path, you should see that the reason for the error is that the extension cannot find a valid FMU at that location.
 	
-	\begin{annotation}[width=0.85\linewidth]{figures/step_6_missing_fmus.png}
-        	\usquare{7cm}{1.2cm}{0.15}{1. Error}{0.68,0.66}
+	\begin{annotation}[width=0.9\linewidth]{figures/step_6_missing_fmus.png}
+        	\usquare{7cm}{1.2cm}{0.15}{Error}{0.68,0.66}
 	%	\helpergrid
 	\end{annotation}
 
 \item To make the FMUs available to the extension, we will create a new folder named \texttt{fmus} in the workspace to contain the FMUs.
 	
-	\begin{annotation}[width=0.85\linewidth]{figures/step_7_new_folder.png}
-        	\usquare{4.5cm}{0.4cm}{0.15}{1. New Folder...}{0.265,0.68}
+	\begin{annotation}[width=0.9\linewidth]{figures/step_7_new_folder.png}
+        	\usquare{4.5cm}{0.4cm}{0.15}{New Folder...}{0.265,0.68}
 	%	\helpergrid
 	\end{annotation}
 
@@ -101,16 +101,9 @@ Any workspace folder containing a \texttt{cosim.json} simulation configuration f
     \bigskip
     {\large\bfseries Note:} The extension does not impose any restrictions on the structure of the project, so you can name the folder anything you like, remembering to update the corresponding path in \texttt{cosim.json}.
 
-\item Populate the newly created folder with the two FMUs found at \url{https://www.github.com}.
+\item Populate the newly created folder with the two FMUs found in the directory alongside this tutorial PDF. The errors indicating that the FMUs were not found should now have cleared. At this point, we have a very basic project set up that is ready for simulation.
 	
-	\begin{annotation}[width=0.85\linewidth]{figures/step_7_new_folder.png}
-        	\usquare{4.5cm}{0.4cm}{0.15}{1. New Folder...}{0.265,0.68}
-	%	\helpergrid
-	\end{annotation}
-
-\item The errors indicating that the FMUs were not found should now have cleared. At this point, we have a very basic project set up that is ready for simulation.
-	
-	\begin{annotation}[width=0.85\linewidth]{figures/step_9_error_free.png}
+	\begin{annotation}[width=0.9\linewidth]{figures/step_9_error_free.png}
 	%	\helpergrid
 	\end{annotation}
 
@@ -122,24 +115,28 @@ Any workspace folder containing a \texttt{cosim.json} simulation configuration f
 
 \begin{instructions}
 
-\item Before running a simulation, ensure that \maestro is running on your local device. Open a terminal in the folder where you have installed \maestro, and then run \texttt{java -jar maestro-webapi-<latest-version>-bundle.jar}. You should see something similar to the image below:
+\item Before running a simulation, ensure that \maestro is running on your local device. Open a terminal in the folder where you have installed \maestro, and then run 
 
-\begin{annotation}[width=0.85\linewidth]{figures/step_10_maestro_terminal.png}
+\texttt{java -jar maestro-webapi-<latest-version>-bundle.jar}. 
+
+You should see something similar to the image below:
+
+\begin{annotation}[width=0.9\linewidth]{figures/step_10_maestro_terminal.png}
 	%	\helpergrid
 	\end{annotation}
 
 \item Run the simulation from Visual Studio Code.
 
 
-\begin{annotation}[width=0.85\linewidth]{figures/step_8_run_simulation.png}
-	\usquare{0.4cm}{0.4cm}{0.75}{1. Run simulation}{0.92,0.9}
+\begin{annotation}[width=0.9\linewidth]{figures/step_8_run_simulation.png}
+	\usquare{0.4cm}{0.4cm}{0.75}{Run simulation}{0.92,0.9}
 	\end{annotation}
 
+\clearpage
 \item After running for a short period, the results show up in a new file 
 
 
-	\begin{annotation}[width=0.85\linewidth]{figures/step_8_run_simulation.png}
-		\usquare{0.4cm}{0.4cm}{0.75}{1. Run simulation}{0.92,0.9}
+	\begin{annotation}[width=0.9\linewidth]{figures/step_11_simulation_results.png}
 		\end{annotation}
 
 		\bigskip
